@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tool Seller</title>
+</head>
+<body>
+    <div class="header">
+        <div class="toplist">
+            <ul>
+                <li><a href="#"><i class="fa fa-briefcase"></i> Careers</a></li>
+                <li><a href="#"><i class="fa fa-info-circle"></i> About us</a></li>
+                <li><a href="#"><i class="fa fa-envelope"></i> Contact us</a></li>
+            </ul>
+        </div>
+        <div class="tophead">
+            <h1>LOGO</h1>
+            <div class="search">
+                <form action="#">
+                    <input type="text" placeholder="Search..." name="search">
+                    <button>
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="nav-container">
+            <div class="nav">
+                <button onclick="redirectToPage('Specialoffers.html')">
+                    <i class="fa fa-tags"></i> Special Offers
+                </button>
+                <button onclick="redirectToPage('Departments.html')">
+                    <i class="fa fa-list"></i> Departments
+                </button>
+            </div>
+            <div class="nav2">
+                <button><i class="fa fa-user"></i> User</button>
+                <button><i class="fa fa-map-marker"></i> Locations</button>
+                <button><i class="fa fa-shopping-basket"></i> Basket</button>
+            </div>
+        </div>
+    </div>
+    <div class="banner-container">
+        <div class="banner" style="background-image: url('salebanner.jpg'); background-size: cover;">
+        </div>
+        <div class="banner" style="background-image: url('newarrival.jpg'); background-size: cover;">
+        </div>
+    </div>
+
+    <!-- Product Section -->
+    <div class="product-section">
+        <h2>Featured Products</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="tool1.jpg" alt="Tool 1">
+                <h3>Hammer</h3>
+                <p>$10.99</p>
+                <button>Add to Basket</button>
+            </div>
+            <div class="product-card">
+                <img src="tool2.jpg" alt="Tool 2">
+                <h3>Screwdriver Set</h3>
+                <p></p>
+                <button>Add to Basket</button>
+            </div>
+            <div class="product-card">
+                <img src="tool3.jpg" alt="Tool 3">
+                <h3>Drill</h3>
+                <p></p>
+                <button>Add to Basket</button>
+            </div>
+            <div class="product-card">
+                <img src="tool4.jpg" alt="Tool 4">
+                <h3>Wrench Set</h3>
+                <p>$25.99</p>
+                <button>Add to Basket</button>
+            </div>
+        </div>
+    </div>
+    <div class="carousel-container">
+        <div class="carousel-slides" id="carouselSlides">
+            <div class="carousel-slide" style="background-image: url('caro1.png');"></div>
+            <div class="carousel-slide" style="background-image: url('caro2.png');"></div>
+            <div class="carousel-slide" style="background-image: url('caro3.jpg');"></div>
+        </div>
+        <button class="carousel-btn left" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="carousel-btn right" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+
+
+    <!-- Footer Section -->
+    <div class="footer">
+        <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Contact Support</a></li>
+        </ul>
+        <p>&copy; 2024 Tool Seller. All rights reserved.</p>
+    </div>
+
+    <script>
+        function redirectToPage(page) {
+            window.location.href = page;
+        }
+
+        let slideIndex = 0;
+        const slides = document.getElementById('carouselSlides');
+        const totalSlides = slides.children.length;
+
+        function showSlide(index) {
+            if (index >= totalSlides) {
+                slideIndex = 0;
+            } else if (index < 0) {
+                slideIndex = totalSlides - 1;
+            } else {
+                slideIndex = index;
+            }
+            slides.style.transform = `translateX(-${slideIndex * 100}%)`;
+        }
+
+        function moveSlide(step) {
+            showSlide(slideIndex + step);
+        }
+
+        // Auto-scroll function
+        setInterval(() => {
+            moveSlide(1);
+        }, 3000);
+    </script>
+</body>
+</html>
+</body>
+</html>
