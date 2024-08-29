@@ -8,8 +8,8 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    max-width: 100%; /* Prevent horizontal overflow */
-    overflow-x: hidden; /* Hide any potential horizontal overflow */
+    width: 100vw; /* Set body width to the viewport width */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 /* Header Styles */
@@ -17,14 +17,9 @@ header {
     background-color: #0d47a1;
     color: white;
     padding: 10px;
-}
-
-header, .product-section, .carousel-container, footer {
     width: 100%;
-    max-width: 100%;
-    overflow-x: hidden; /* Ensure no content goes outside the container */
-    margin: 0 auto; /* Center the content */
-    padding: 0 10px; /* Small padding to prevent touching screen edges */
+    max-width: 100vw; /* Ensure header does not overflow */
+    overflow-x: hidden;
 }
 
 .top-nav ul {
@@ -48,10 +43,12 @@ header, .product-section, .carousel-container, footer {
     justify-content: space-between;
     align-items: center;
     padding: 10px 0;
+    width: 100%;
 }
 
 .search-bar form {
     display: flex;
+    width: 100%;
 }
 
 .search-bar input[type="text"] {
@@ -75,11 +72,13 @@ header, .product-section, .carousel-container, footer {
     display: flex;
     justify-content: space-between;
     padding: 10px 0;
+    width: 100%;
 }
 
 .nav-left, .nav-right {
     display: flex;
     gap: 10px;
+    flex-wrap: wrap; /* Allow buttons to wrap and prevent overflow */
 }
 
 .nav-left button, .nav-right button {
@@ -94,6 +93,7 @@ header, .product-section, .carousel-container, footer {
 /* Banner Section */
 .banner-container {
     display: flex;
+    flex-wrap: wrap; /* Ensure banners wrap on smaller screens */
     gap: 20px;
     margin: 20px 0;
 }
@@ -104,12 +104,14 @@ header, .product-section, .carousel-container, footer {
     background-size: cover;
     background-position: center;
     border-radius: 10px;
+    max-width: 100%; /* Prevent banners from overflowing */
 }
 
 /* Product Section */
 .product-section {
     padding: 20px;
     background-color: #f9f9f9;
+    width: 100%;
 }
 
 .product-grid {
@@ -124,6 +126,8 @@ header, .product-section, .carousel-container, footer {
     border: 1px solid #ddd;
     text-align: center;
     border-radius: 10px;
+    width: 100%;
+    max-width: 100%; /* Ensure cards do not overflow */
 }
 
 .product-card img {
@@ -177,6 +181,8 @@ footer {
     color: white;
     padding: 20px;
     text-align: center;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 footer ul {
@@ -187,7 +193,7 @@ footer ul {
     margin-bottom: 10px;
 }
 
-/* Adjust header elements */
+/* Responsive Adjustments */
 @media (max-width: 768px) {
     .main-header {
         flex-direction: column;
@@ -197,25 +203,24 @@ footer ul {
 
     .banner-container {
         flex-direction: column;
+        width: 100%;
     }
 
     .navigation {
         flex-direction: column;
         align-items: center;
-        width: 100%; /* Make sure navigation takes full width */
-        padding: 10px 0;
     }
 
     .nav-left, .nav-right {
         flex-direction: column;
         gap: 10px;
-        width: 100%; /* Adjust width to prevent overflow */
+        width: 100%;
     }
 
     .nav-left button, .nav-right button {
-        width: 90%; /* Ensure buttons don't take full width to add padding */
-        max-width: 300px; /* Limit max width for large screens */
-        margin: 5px auto; /* Center buttons */
+        width: 90%;
+        max-width: 300px;
+        margin: 5px auto;
     }
 
     .search-bar input[type="text"] {
@@ -223,9 +228,25 @@ footer ul {
         margin-bottom: 10px;
         width: 100%;
     }
+
+    .product-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        padding: 0 10px;
+    }
+
+    .product-card {
+        padding: 10px;
+        margin: 0 auto;
+        width: 90%;
+        max-width: 250px;
+    }
+
+    .product-card img {
+        height: 180px;
+    }
 }
 
-/* Further adjustments for very small screens */
 @media (max-width: 480px) {
     .top-nav ul {
         flex-direction: column;
@@ -237,7 +258,7 @@ footer ul {
     }
 
     .product-card img {
-        height: 200px; /* Make images smaller */
+        height: 150px;
     }
 
     .product-section {
@@ -245,51 +266,18 @@ footer ul {
     }
 
     .carousel-btn {
-        padding: 5px; /* Smaller button size */
+        padding: 5px;
     }
 
     .banner {
-        height: 150px; /* Smaller banner height */
+        height: 150px;
     }
 
     .product-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Further adjust for very small screens */
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     }
 
     .product-card img {
-        height: 150px; /* Reduce image height even more */
-    }
-}
-
-@media (max-width: 768px) {
-    .product-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust minimum width */
-        gap: 15px; /* Reduce gap for smaller screens */
-        padding: 0 10px; /* Add some padding for smaller screens */
-    }
-
-    .product-card {
-        padding: 10px; /* Reduce padding */
-        margin: 0 auto; /* Center product cards */
-        width: 90%; /* Set max width to prevent overflow */
-        max-width: 250px; /* Limit the max width */
-    }
-
-    .product-card img {
-        height: 180px; /* Reduce image height */
-    }
-}
-
-@media (max-width: 480px) {
-    .product-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Further adjust for very small screens */
-    }
-
-    .product-card img {
-        height: 150px; /* Reduce image height even more */
-    }
-
-    .product-section {
-        padding: 10px; /* Reduce padding on smaller screens */
+        height: 150px;
     }
 }
