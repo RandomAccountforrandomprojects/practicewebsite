@@ -8,8 +8,8 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    width: 100vw; /* Set body width to the viewport width */
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+    max-width: 100vw; /* Ensure body doesn't overflow horizontally */
+    overflow-x: hidden;
 }
 
 /* Header Styles */
@@ -18,8 +18,6 @@ header {
     color: white;
     padding: 10px;
     width: 100%;
-    max-width: 100vw; /* Ensure header does not overflow */
-    overflow-x: hidden;
 }
 
 .top-nav ul {
@@ -27,115 +25,127 @@ header {
     justify-content: flex-end;
     list-style: none;
     padding: 5px 0;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    margin: 0;
 }
 
 .top-nav ul li {
-    margin-left: 20px;
+    margin-left: 10px;
+    padding: 5px 0;
 }
 
 .top-nav ul li a {
     color: white;
     text-decoration: none;
+    font-size: 14px; /* Reduce font size for better fitting */
 }
 
 .main-header {
     display: flex;
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
     justify-content: space-between;
     align-items: center;
-    padding: 10px 0;
     width: 100%;
 }
 
 .search-bar form {
     display: flex;
+    flex-wrap: wrap; /* Allow wrapping of search elements */
     width: 100%;
 }
 
 .search-bar input[type="text"] {
-    padding: 10px;
+    padding: 8px;
     border: none;
     border-radius: 4px;
-    margin-right: 10px;
+    margin-bottom: 5px;
     flex: 1;
+    width: 100%; /* Full width on smaller screens */
 }
 
 .search-bar button {
-    padding: 10px;
+    padding: 8px;
     background-color: white;
     color: green;
     border: none;
     cursor: pointer;
     border-radius: 4px;
+    flex-shrink: 0;
 }
 
+/* Navigation Section */
 .navigation {
     display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
+    flex-wrap: wrap; /* Allow wrapping of nav items */
+    justify-content: center;
+    gap: 5px;
     width: 100%;
 }
 
 .nav-left, .nav-right {
     display: flex;
-    gap: 10px;
-    flex-wrap: wrap; /* Allow buttons to wrap and prevent overflow */
+    flex-wrap: wrap; /* Allow wrapping of buttons */
+    justify-content: center;
+    gap: 5px;
+    width: 100%;
 }
 
 .nav-left button, .nav-right button {
     background-color: #0d47a1;
     color: white;
-    padding: 10px;
+    padding: 8px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    width: fit-content;
+    flex: 1;
+    margin: 5px;
+    max-width: 100px; /* Limit button width to prevent overflow */
 }
 
 /* Banner Section */
 .banner-container {
     display: flex;
     flex-wrap: wrap; /* Ensure banners wrap on smaller screens */
-    gap: 20px;
+    gap: 10px;
     margin: 20px 0;
-    width: 100%; /* Ensure container fits within the screen */
+    width: 100%;
 }
 
 .banner {
-    flex: 1;
-    height: 250px;
+    flex: 1 1 100%;
+    height: 200px;
     background-size: cover;
     background-position: center;
     border-radius: 10px;
-    max-width: 100%; /* Prevent banners from overflowing */
 }
 
 /* Product Section */
 .product-section {
-    padding: 20px;
+    padding: 10px;
     background-color: #f9f9f9;
     width: 100%;
 }
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Dynamic grid layout */
-    gap: 20px;
-    width: 100%; /* Ensure the grid stays within the container */
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Ensure dynamic fitting */
+    gap: 10px;
+    width: 100%;
 }
 
 .product-card {
     background-color: white;
-    padding: 20px;
+    padding: 10px;
     border: 1px solid #ddd;
     text-align: center;
     border-radius: 10px;
     width: 100%;
-    max-width: 100%; /* Ensure cards do not overflow */
+    max-width: 100%;
 }
 
 .product-card img {
     width: 100%;
-    height: 250px;
+    height: 180px;
     object-fit: cover;
     border-radius: 10px;
 }
@@ -166,7 +176,7 @@ header {
     background-color: rgba(0, 0, 0, 0.5);
     border: none;
     color: white;
-    padding: 10px;
+    padding: 5px;
     cursor: pointer;
 }
 
@@ -185,14 +195,13 @@ footer {
     padding: 20px;
     text-align: center;
     width: 100%;
-    overflow-x: hidden;
 }
 
 footer ul {
     list-style: none;
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 10px;
     margin-bottom: 10px;
 }
 
@@ -201,7 +210,7 @@ footer ul {
     .main-header {
         flex-direction: column;
         align-items: center;
-        padding: 20px 0;
+        padding: 10px 0;
     }
 
     .banner-container {
@@ -213,42 +222,32 @@ footer ul {
         flex-direction: column;
         align-items: center;
         width: 100%;
-        padding: 10px 0;
     }
 
     .nav-left, .nav-right {
         flex-direction: column;
-        gap: 10px;
+        align-items: center;
         width: 100%;
     }
 
-    .nav-left button, .nav-right button {
-        width: 90%;
-        max-width: 300px;
-        margin: 5px auto;
-    }
-
     .search-bar input[type="text"] {
-        margin-right: 0;
         margin-bottom: 10px;
         width: 100%;
     }
 
     .product-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust for smaller screens */
-        gap: 15px;
-        padding: 0 10px;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjust grid columns */
     }
 
     .product-card {
         padding: 10px;
         margin: 0 auto;
-        width: 90%;
+        width: 100%;
         max-width: 250px;
     }
 
     .product-card img {
-        height: 180px;
+        height: 150px;
     }
 }
 
@@ -259,11 +258,11 @@ footer ul {
     }
 
     .top-nav ul li {
-        margin: 10px 0;
+        margin: 5px 0;
     }
 
     .product-card img {
-        height: 150px;
+        height: 120px;
     }
 
     .product-section {
@@ -275,14 +274,6 @@ footer ul {
     }
 
     .banner {
-        height: 150px;
-    }
-
-    .product-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Further adjust for very small screens */
-    }
-
-    .product-card img {
         height: 150px;
     }
 }
