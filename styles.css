@@ -177,11 +177,12 @@ footer ul {
     margin-bottom: 10px;
 }
 
-/* Media Queries */
+/* Adjust header elements */
 @media (max-width: 768px) {
     .main-header {
         flex-direction: column;
         align-items: center;
+        padding: 20px 0;
     }
 
     .banner-container {
@@ -196,5 +197,39 @@ footer ul {
     .nav-left, .nav-right {
         flex-direction: column;
         gap: 10px;
+    }
+
+    .search-bar input[type="text"] {
+        margin-right: 0;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+}
+
+/* Further adjustments for very small screens */
+@media (max-width: 480px) {
+    .top-nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .top-nav ul li {
+        margin: 10px 0;
+    }
+
+    .product-card img {
+        height: 200px; /* Make images smaller */
+    }
+
+    .product-section {
+        padding: 10px;
+    }
+
+    .carousel-btn {
+        padding: 5px; /* Smaller button size */
+    }
+
+    .banner {
+        height: 150px; /* Smaller banner height */
     }
 }
