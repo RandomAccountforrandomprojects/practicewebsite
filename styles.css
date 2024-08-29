@@ -19,6 +19,14 @@ header {
     padding: 10px;
 }
 
+header, .product-section, .carousel-container, footer {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden; /* Ensure no content goes outside the container */
+    margin: 0 auto; /* Center the content */
+    padding: 0 10px; /* Small padding to prevent touching screen edges */
+}
+
 .top-nav ul {
     display: flex;
     justify-content: flex-end;
@@ -194,11 +202,20 @@ footer ul {
     .navigation {
         flex-direction: column;
         align-items: center;
+        width: 100%; /* Make sure navigation takes full width */
+        padding: 10px 0;
     }
 
     .nav-left, .nav-right {
         flex-direction: column;
         gap: 10px;
+        width: 100%; /* Adjust width to prevent overflow */
+    }
+
+    .nav-left button, .nav-right button {
+        width: 90%; /* Ensure buttons don't take full width to add padding */
+        max-width: 300px; /* Limit max width for large screens */
+        margin: 5px auto; /* Center buttons */
     }
 
     .search-bar input[type="text"] {
@@ -234,27 +251,13 @@ footer ul {
     .banner {
         height: 150px; /* Smaller banner height */
     }
-}
 
-@media (max-width: 768px) {
-    /* Stack navigation buttons vertically */
-    .navigation {
-        flex-direction: column;
-        align-items: center;
-        width: 100%; /* Make sure navigation takes full width */
-        padding: 10px 0;
+    .product-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Further adjust for very small screens */
     }
 
-    .nav-left, .nav-right {
-        flex-direction: column;
-        gap: 10px;
-        width: 100%; /* Adjust width to prevent overflow */
-    }
-
-    .nav-left button, .nav-right button {
-        width: 90%; /* Ensure buttons don't take full width to add padding */
-        max-width: 300px; /* Limit max width for large screens */
-        margin: 5px auto; /* Center buttons */
+    .product-card img {
+        height: 150px; /* Reduce image height even more */
     }
 }
 
